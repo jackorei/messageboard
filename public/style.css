@@ -3,6 +3,12 @@
     text-decoration: none;
     color: white;
     box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+    font-weight: 200;
+}
+
+*:focus {
+    outline: none;
 }
 
 html {
@@ -97,13 +103,7 @@ header {
     padding: 10px;
     border-radius: 5px;
     gap: 10px;
-    cursor: pointer;
-}
-
-#messagebar:hover {
-    transform: scale(1.005);
-    background: rgba(255, 255, 255, 0.025);
-    border: 1px solid rgba(255, 255, 255, 0.156);
+    cursor: default;
 }
 
 .allmessages {
@@ -112,13 +112,15 @@ header {
     width: 90%;
     max-width: 500px;
     gap: 10px;
-    height: 60vh;
+    max-height: 60vh;
+    overflow-y: auto;
 }
 
 .app {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
   
 #topmsg {
@@ -134,4 +136,91 @@ header {
 
 #msgtext {
     font-size: 20px;
+}
+
+#addnew {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.086);
+    padding: 10px;
+    border-radius: 5px;
+    gap: 10px;
+    cursor: pointer;
+}
+
+#addnew:hover {
+    transform: scale(1.006);
+    background: rgba(255, 255, 255, 0.037);
+    border: 1px solid rgba(255, 255, 255, 0.156);
+}
+
+.msgform {
+    max-width: 500px;
+    width: 40%;
+    max-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.014);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.086);
+    padding: 10px;
+    border-radius: 5px;
+    gap: 10px;
+}
+
+#msgform1 {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#submitmsg {
+    margin-top: 30px;
+    padding: 10px;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.086);
+    padding: 10px;
+    border-radius: 5px;
+    gap: 10px;
+    cursor: pointer;
+}
+
+#submitmsg:hover {
+    transform: scale(1.006);
+    background: rgba(255, 255, 255, 0.037);
+    border: 1px solid rgba(255, 255, 255, 0.156);
+}
+
+input {
+    font-size: 20px;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.086);
+    border-radius: 5px;
+    gap: 10px;
+    cursor: pointer;
 }

@@ -24,4 +24,12 @@ router.get('/new', (req, res) => {
     res.render('form')
 })
 
+router.post('/new', (req, res) => {
+    const newuser = req.body.userinpp
+    const newtext = req.body.msginpp
+
+    messages.push({text: newtext, user: newuser, added: formatDate(new Date())})
+    res.redirect('/')
+})
+
 module.exports = router
