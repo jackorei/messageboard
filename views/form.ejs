@@ -12,7 +12,7 @@
     <main>
         <div class="app">
             <div class="msgform">
-                <form id="msgform1" method="POST" action="/new">
+                <form id="msgform1" method="POST" action="/new" onsubmit="this.querySelector('button').disabled = true;">
                     <label id="userlabel" for="userinp">Username:</label>
                     <input id="userinp" name="userinpp" type="text">
                     <label id="msglabel" for="userinp">Message:</label>
