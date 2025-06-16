@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const Message = require('../models/message')
 const router = Router()
 
 function formatDate(date) {
@@ -11,25 +12,34 @@ function formatDate(date) {
     return `${day}-${month}-${year} ${hours}:${minutes}`
 }
 
-const messages = [
-    {text: 'Hello there!', user: 'Jack', added: formatDate(new Date())},
-    {text: 'Meow!', user: 'Nina', added: formatDate(new Date())}
-]
-
-router.get('/', (req, res) => {
-    res.render('index', { messages: messages })
+router.get('/', async (req, res) => {
+    try {
+        const rawMessages = await Message.find().sort({ added: -1 })
+        const messages = rawMessages.map(m => ({
+            ...m._doc,
+            added: formatDate(m.added)
+        }))
+        res.render('index', {  messages })
+    }
+    catch (err) {
+        res.status(500).send('Error fetching messages!')
+    }
 })
 
 router.get('/new', (req, res) => {
     res.render('form')
 })
 
-router.post('/new', (req, res) => {
-    const newuser = req.body.userinpp
-    const newtext = req.body.msginpp
+router.post('/new', async (req, res) => {
+    const { userinpp, msginpp } = req.body
 
-    messages.push({text: newtext, user: newuser, added: formatDate(new Date())})
-    res.redirect('/')
+    try {
+        await Message.create({ user: userinpp, text: msginpp})
+        res.redirect('/')
+    }
+    catch (err) {
+        res.status(500).send('Error saving message!')
+    }
 })
 
 module.exports = router
